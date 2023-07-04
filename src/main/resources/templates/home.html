@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Chat Box</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/home.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+
+<!--    <link rel="stylesheet" href="/static/css/home.css">-->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <header>
+        <div class="avatar" id="avatar">
+            <img src="/image/defaultAVT.jpg" alt="defaultAVT">
+        </div>
+        <div class="user-information" id="user-information">
+            <div>
+                <div class="information">
+                    <label>First Name:</label>
+                    <input type="text" id="sfirstName" disabled><br>
+                    <label>Last Name:</label>
+                    <input type="text" id="slastName" disabled><br>
+                    <label>Date of Birth:</label>
+                    <input type="text" id="sdateOfBirth" disabled><br>
+                    <label>Phone Number:</label>
+                    <input type="text" id="sphoneNumber" disabled><br>
+                    <label>Nick Name:</label>
+                    <input type="text" id="snickName" disabled><br>
+                    <label>Gender:</label>
+                    <input type="text" id="sgender" disabled><br>
+                    <label>Email:</label>
+                    <input type="text" id="semail" disabled><br>
+                    <label>Note:</label>
+                    <textarea id="saccountNote" disabled></textarea><br>
+                </div>
+                <div>
+                    <button id="editButton">Edit</button>
+                    <button id="cancel0">cancel</button>
+                </div>
+            </div>
+
+            <div class="user-information" id="user-information-input">
+                <form id="userForm">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName"><br>
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName"><br>
+                    <label>Date of Birth:</label>
+                    <input type="date" id="dateOfBirth"><br>
+
+                    <label>Phone Number:</label>
+                    <input type="text" id="phoneNumber"><br>
+                    <label>Nick Name:</label>
+                    <input type="text" id="nickName"><br>
+                    <label>Gender:</label>
+                    <select id="gender">
+                        <option value="true">Male</option>
+                        <option value="false">Female</option>
+                    </select><br>
+                    <label>Email:</label>
+                    <input type="email" id="email"><br>
+                    <label>Note:</label>
+                    <textarea id="accountNote"></textarea><br>
+                    <button type="submit" id="submit-userForm">Submit</button>
+                    <button id="cancel1">cancel</button>
+                </form>
+            </div>
+        </div>
+        <div class="logout">
+            <button id="logout">Log Out</button>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-lg-12">
+                <div class="card chat-app">
+                    <div id="plist" class="people-list">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-search"></i></span>
+                            </div>
+                            <input type="text" class="form-control" id="search-input" placeholder="Search...">
+                        </div>
+                        <ul id="friend-list" class="list-unstyled chat-list mt-2 mb-0">
+                            
+                        </ul>
+                    </div>
+                    <div class="chat">
+                        <div class="chat-header clearfix">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <a href="javascript:void(0);" data-toggle="modal" data-target="#view_info">
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="avatar">
+                                    </a>
+                                    <div class="chat-about">
+                                        <h6 class="m-b-0">Aiden Chavez</h6>
+                                        <small>Last seen: 2 hours ago</small>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 hidden-sm text-right">
+                                    <a href="javascript:void(0);" class="btn btn-outline-secondary"><i
+                                            class="fa fa-camera"></i></a>
+                                    <a href="javascript:void(0);" class="btn btn-outline-primary"><i
+                                            class="fa fa-image"></i></a>
+                                    <a href="javascript:void(0);" class="btn btn-outline-info"><i
+                                            class="fa fa-cogs"></i></a>
+                                    <a href="javascript:void(0);" class="btn btn-outline-warning"><i
+                                            class="fa fa-question"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-history">
+                            <ul id="chatMessages" class="m-b-0">
+
+                            </ul>
+                        </div>
+                        <div id="chat-message" class="chat-message clearfix">
+                            <div class="input-group mb-0">
+                                <input id="send-message-area" type="text" class="form-control"
+                                    placeholder="Enter text here...">
+                                <div class="input-group-prepend">
+                                    <button type="button" id="send-message-button" class="input-group-text"><i
+                                            class="fa fa-send"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="/js/home/home.js"></script>
+    <script src="/js/home/sendMessage.js"></script>
+
+<!--    <script src="/static/js/home/home.js"></script>-->
+
+</body>
+
+</html>
