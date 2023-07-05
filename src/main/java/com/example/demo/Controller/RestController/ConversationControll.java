@@ -75,4 +75,10 @@ public class ConversationControll {
         conversations.forEach(c -> System.out.println(c.getId() + "-------" + c.getConversationName()));
         return conversations;
     }
+    @GetMapping(value = "/chat-history/{conversationId}")
+    public ResponseEntity<List<ContentDto>> messages(@PathVariable(value = "conversationId") long conversationId) {
+        System.out.println("content history :"+Thread.currentThread().getName());
+        List<ContentDto> contentDtos = contentService.getContentByConversationId(conversationId);
+        return ResponseEntity.ok(contentDtos);
+    }
 }

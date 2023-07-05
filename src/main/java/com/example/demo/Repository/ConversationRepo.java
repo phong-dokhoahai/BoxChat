@@ -23,6 +23,7 @@ public interface ConversationRepo extends JpaRepository<Conversation, Long>, Jpa
     @Query(value = "Select new com.example.demo.Dto.EntityDto.ConversationDto(c.id, c.conversationName) From Conversation c " +
             "JOIN account_conversation acb ON acb.conversation.id = c.id " +
             "JOIN Account a ON a.id = acb.account.id " +
-            "WHERE a.username = :username")
+            "WHERE a.username = :username " +
+            "GROUP BY c.id,c.conversationName")
     List<ConversationDto> findConversationByUsername(@Param(value = "username") String username);
 }

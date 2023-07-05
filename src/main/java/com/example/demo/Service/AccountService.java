@@ -70,7 +70,7 @@ public class AccountService {
             account.setEmail(accountNamePasswordDTO.getEmail());
             account.setRole(Account.Role.USER);
             accountRepo.save(account);
-            throw new NullPointerException();
+
         } catch (Exception e) {
             System.out.println("Tài khoản đã tồn tại");
         }
@@ -89,11 +89,17 @@ public class AccountService {
                 account.setUsername(e.getEmail());
                 BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
                 account.setPassword(bCryptPasswordEncoder.encode(e.getEmail().substring(0, e.getEmail().indexOf("@"))));// vi du:phong.dokhoahai@ncc.asia.vn ; mat khau : phong.dokhoahai
+
                 account.setEmail(e.getEmail());
                 account.setFirstName(e.getFirstName());
                 account.setLastName(e.getLastName());
                 account.setRole(Account.Role.USER);
-                account.setNickName(e.getFirstName() + e.getLastName());
+                account.setNickName(e.getFirstName() +" "+ e.getLastName());
+                account.setPhoneNumber(e.getPhoneNumber());
+                account.setAccountNote(e.getAccountNote());
+                account.setGender(e.isGender());
+                account.setDateOfBirth(e.getDateOfBirth());
+
                 accountRepo.save(account);
             } catch (Exception exception) {
                 System.out.println("Tài khoản đã tồn tại");
@@ -123,6 +129,7 @@ public class AccountService {
 
     public void deleteAnAccountById(Long id) {
         accountRepo.deleteById(id);
+
     }
 
     public void updateAccountToAdmin(long id) {

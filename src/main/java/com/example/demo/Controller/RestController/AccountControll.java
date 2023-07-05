@@ -65,8 +65,12 @@ public class AccountControll {
             value = "/register",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public void createAccount(@RequestBody AccountNamePasswordDTO accountNamePasswordDTO) {
+    public ResponseEntity<String> createAccount(@RequestBody AccountNamePasswordDTO accountNamePasswordDTO) {
         accountService.createAccount(accountNamePasswordDTO);
+
+        System.out.println("Đăng ký thành công !");
+        String response ="Success";
+        return ResponseEntity.ok(response);
     }
 
     @PatchMapping("/information/edit")// edit account

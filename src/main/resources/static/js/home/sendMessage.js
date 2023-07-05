@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", connect);
 //function test1 (){
 //      document.getElementById("demo").innerHTML = localStorage.getItem('token')
 //}
-
 function sendMessage(event, conversationId) {
      conversationId = 1;
 

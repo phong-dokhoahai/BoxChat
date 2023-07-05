@@ -12,10 +12,15 @@ public class AccountList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private List<Long> accountIdList;
 
+    @Column
     @Enumerated(EnumType.STRING)
     private Type typeList;
+
+
+
     public enum Type {
         STRANGER, FRIEND,BLOCK
     }

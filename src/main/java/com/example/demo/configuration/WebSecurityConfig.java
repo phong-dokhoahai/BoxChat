@@ -44,6 +44,8 @@ public class WebSecurityConfig {
                 .requestMatchers("/register","/account/register").permitAll()
                 .requestMatchers("/forgot-password").permitAll()
                 .requestMatchers("/auth/login").permitAll()
+                .requestMatchers("/CreateAccountByRestTemplate").permitAll()
+                .requestMatchers("/MockAccountConversationData").permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()

@@ -2,7 +2,7 @@
 var sendMessageArea = document.getElementById("send-message-area");
 function getChatHistory(conversationId) {
   var conversationId = 1;
-  fetch("/content/chat-history/" + conversationId)
+  fetch("/conversation/chat-history/" + conversationId)
     .then(response => {
       if (response.ok) {
         return response.json();
@@ -10,27 +10,27 @@ function getChatHistory(conversationId) {
       throw new Error('Network response was not OK');
     })
     .then(data => {
-      var chatMessages = document.getElementById("chatMessages");
+      let chatMessages = document.getElementById("chatMessages");
       // Hiển thị các tin nhắn trong danh sách
       data.forEach(function (contentDto) {
         console.log(contentDto)
-        var messageItem = document.createElement("li");
+        let messageItem = document.createElement("li");
         messageItem.classList.add("clearfix");
 
-        var messageData = document.createElement("div");
+        let messageData = document.createElement("div");
         messageData.classList.add("message-data");
 
-        var messageDataTime = document.createElement("span");
+        let messageDataTime = document.createElement("span");
         messageDataTime.classList.add("message-data-time");
         messageDataTime.textContent = new Date(contentDto.createDate);
 
         messageData.appendChild(messageDataTime);
 
-        var message = document.createElement("div");
+        let message = document.createElement("div");
         message.classList.add("message");
         message.textContent = contentDto.content;
 
-        var nickname = document.createElement("div");
+        let nickname = document.createElement("div");
         nickname.classList.add("message");
         nickname.textContent = contentDto.nickName;
 
@@ -91,14 +91,14 @@ function showUserInfor() {
 }
 document.getElementById("cancel0").addEventListener('click', cancelForm0)
 function cancelForm0() {
-  var form = document.getElementById("user-information");
+  let form = document.getElementById("user-information");
   form.style.display = "none";
 }
 
 // show-hidden enter user form
  document.getElementById("editButton").addEventListener('click', showForm)
 function showForm() {
-  var form = document.getElementById("user-information-input");
+  let form = document.getElementById("user-information-input");
   form.style.display = "block";
 }
 document.getElementById("cancel1").addEventListener('click', cancelForm1)
@@ -113,17 +113,17 @@ function cancelForm1() {
 var submitButtonUserForm = document.getElementById("submit-userForm").addEventListener('submit', submitForm);
 
 function submitForm() {
-  var firstName = document.getElementById("firstName").value;
-  var lastName = document.getElementById("lastName").value;
-  var dateOfBirth = document.getElementById("dateOfBirth").value;
-  var accountNote = document.getElementById("accountNote").value;
-  var phoneNumber = document.getElementById("phoneNumber").value;
-  var nickName = document.getElementById("nickName").value;
-  var gender = document.getElementById("gender").value === "true";
-  var email = document.getElementById("email").value;
+  let firstName = document.getElementById("firstName").value;
+  let lastName = document.getElementById("lastName").value;
+  let dateOfBirth = document.getElementById("dateOfBirth").value;
+  let accountNote = document.getElementById("accountNote").value;
+  let phoneNumber = document.getElementById("phoneNumber").value;
+  let nickName = document.getElementById("nickName").value;
+  let gender = document.getElementById("gender").value === "true";
+  let email = document.getElementById("email").value;
 
-var accountId = localStorage.getItem('id');
-  var accountDto = {
+  let accountId = localStorage.getItem('id');
+  let accountDto = {
     id:accountId,
     firstName: firstName,
     lastName: lastName,
@@ -137,9 +137,7 @@ var accountId = localStorage.getItem('id');
   console.log(accountDto)
   sendFormData(accountDto);
 }
-
 function sendFormData(accountDto) {
-
   fetch('/account/information/edit', {
     method: 'PATCH',
     headers: {
@@ -183,7 +181,7 @@ function sendFormData(accountDto) {
 // show all conversation
 document.addEventListener('DOMContentLoaded',showAllConversation)
 function showAllConversation(){
-  var username =localStorage.getItem('username');
+  let username =localStorage.getItem('username');
   fetch('/conversation/account/all?username='+username)
         .then(response => response.json())
         .then(conversations => {
@@ -227,5 +225,7 @@ function showAllConversation(){
             console.error('Error:', error);
         });
 }
+// show avatar & nickname
+document.getElementById("nickname").innerHTML=localStorage.getItem("username")
 
 

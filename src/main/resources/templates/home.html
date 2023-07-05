@@ -10,35 +10,39 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 
-<!--    <link rel="stylesheet" href="/static/css/home.css">-->
+   <!-- <link rel="stylesheet" href="/static/css/home.css"> -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 </head>
 
 <body>
 
     <header>
-        <div class="avatar" id="avatar">
-            <img src="/image/defaultAVT.jpg" alt="defaultAVT">
+        <div class="avatar-nickname">
+            <div class="avatar" >
+                 <img src="/image/defaultAVT.jpg" id="avatar" alt="defaultAVT">
+               <!-- <img src="/static/image/defaultAVT.jpg" alt="defaultAVT"> -->
+            </div>
+                <label for="avatar" id="nickname"></label>
         </div>
         <div class="user-information" id="user-information">
             <div>
                 <div class="information">
                     <label>First Name:</label>
-                    <input type="text" id="sfirstName" disabled><br>
+                    <input type="text" id="show-firstName" disabled><br>
                     <label>Last Name:</label>
-                    <input type="text" id="slastName" disabled><br>
+                    <input type="text" id="show-lastName" disabled><br>
                     <label>Date of Birth:</label>
-                    <input type="text" id="sdateOfBirth" disabled><br>
+                    <input type="text" id="show-dateOfBirth" disabled><br>
                     <label>Phone Number:</label>
-                    <input type="text" id="sphoneNumber" disabled><br>
+                    <input type="text" id="show-phoneNumber" disabled><br>
                     <label>Nick Name:</label>
-                    <input type="text" id="snickName" disabled><br>
+                    <input type="text" id="show-nickName" disabled><br>
                     <label>Gender:</label>
-                    <input type="text" id="sgender" disabled><br>
+                    <input type="text" id="show-gender" disabled><br>
                     <label>Email:</label>
-                    <input type="text" id="semail" disabled><br>
+                    <input type="text" id="show-email" disabled><br>
                     <label>Note:</label>
-                    <textarea id="saccountNote" disabled></textarea><br>
+                    <textarea id="show-accountNote" disabled></textarea><br>
                 </div>
                 <div>
                     <button id="editButton">Edit</button>
@@ -48,26 +52,26 @@
 
             <div class="user-information" id="user-information-input">
                 <form id="userForm">
-                    <label for="firstName">First Name:</label>
-                    <input type="text" id="firstName"><br>
-                    <label for="lastName">Last Name:</label>
-                    <input type="text" id="lastName"><br>
+                    <label for="input-firstName">First Name:</label>
+                    <input type="text" id="input-firstName"><br>
+                    <label for="input-lastName">Last Name:</label>
+                    <input type="text" id="input-lastName"><br>
                     <label>Date of Birth:</label>
-                    <input type="date" id="dateOfBirth"><br>
+                    <input type="date" id="inpit-dateOfBirth"><br>
 
                     <label>Phone Number:</label>
-                    <input type="text" id="phoneNumber"><br>
+                    <input type="text" id="input-phoneNumber"><br>
                     <label>Nick Name:</label>
-                    <input type="text" id="nickName"><br>
+                    <input type="text" id="input-nickName"><br>
                     <label>Gender:</label>
-                    <select id="gender">
+                    <select id="input-gender">
                         <option value="true">Male</option>
                         <option value="false">Female</option>
                     </select><br>
                     <label>Email:</label>
-                    <input type="email" id="email"><br>
+                    <input type="email" id="input-email"><br>
                     <label>Note:</label>
-                    <textarea id="accountNote"></textarea><br>
+                    <textarea id="input-accountNote"></textarea><br>
                     <button type="submit" id="submit-userForm">Submit</button>
                     <button id="cancel1">cancel</button>
                 </form>
@@ -89,7 +93,7 @@
                             <input type="text" class="form-control" id="search-input" placeholder="Search...">
                         </div>
                         <ul id="friend-list" class="list-unstyled chat-list mt-2 mb-0">
-                            
+
                         </ul>
                     </div>
                     <div class="chat">
@@ -141,7 +145,7 @@
     <script src="/js/home/home.js"></script>
     <script src="/js/home/sendMessage.js"></script>
 
-<!--    <script src="/static/js/home/home.js"></script>-->
+   <!-- <script src="/static/js/home/home.js"></script> -->
 
 </body>
 
